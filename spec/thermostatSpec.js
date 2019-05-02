@@ -65,5 +65,15 @@ describe('thermostat', function() {
       expect(thermostat.printUsage()).toEqual("Low Usage")
     });
 
+    it('returns medium usage when temp is under 25', function() {
+      thermostat.currentTemp = 21
+      expect(thermostat.printUsage()).toEqual("Medium Usage")
+    });
+
+    it('returns high usage when temp is 25 and over', function() {
+      thermostat.currentTemp = 25
+      expect(thermostat.printUsage()).toEqual("High Usage")
+    });
+
   });
 });
