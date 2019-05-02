@@ -12,4 +12,9 @@ describe('thermostat', function() {
     expect(thermostat.DEFAULT_TEMP).toEqual(20);
   });
 
+  it('can increase the temperature by 1 degree', function() {
+    thermostat.increaseTemp();
+    expect(thermostat.currentTemp).toEqual(21);
+  });
+
 });
