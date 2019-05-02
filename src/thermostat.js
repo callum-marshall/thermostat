@@ -7,6 +7,9 @@ function Thermostat() {
   this.powerSave = true;
   this.PS_ON_MAX_TEMP = 25;
   this.PS_OFF_MAX_TEMP = 32;
+
+
+
 };
 
 Thermostat.prototype.increaseTemp = function () {
@@ -21,4 +24,14 @@ Thermostat.prototype.increaseTemp = function () {
 
 Thermostat.prototype.decreaseTemp = function () {
   this.currentTemp--
+};
+
+Thermostat.prototype.reset = function () {
+  this.currentTemp = this.DEFAULT_TEMP
+};
+
+Thermostat.prototype.printUsage = function () {
+  if (this.currentTemp < 18) {
+    return "Low Usage"
+  }
 };

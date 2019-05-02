@@ -53,4 +53,17 @@ describe('thermostat', function() {
     expect(function() {thermostat.increaseTemp()}).toThrow('Max temp reached');
   });
 
+  it('can be reset to the default temperature', function() {
+    thermostat.increaseTemp();
+    thermostat.reset();
+    expect(thermostat.currentTemp).toEqual(thermostat.DEFAULT_TEMP)
+  });
+
+  describe('print usage', function() {
+    it('returns low usage when temp is under 18', function() {
+      thermostat.currentTemp = 17
+      expect(thermostat.printUsage()).toEqual("Low Usage")
+    });
+
+  });
 });
