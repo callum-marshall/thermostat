@@ -41,8 +41,14 @@ describe('thermostat', function() {
   it('when PS mode is on, the temp cannot be raised above 25', function() {
     for (var i = 0; i <= 4; i++) {
       thermostat.increaseTemp();
-      console.log(thermostat.currentTemp);
-      console.log(i);
+    };
+    expect(function() {thermostat.increaseTemp()}).toThrow('Powersave Max temp reached');
+  });
+
+  it('when PS mode is off, the temp cannot be raised above 32', function() {
+    thermostat.powerSave = false
+    for (var i = 0; i <= 11; i++) {
+      thermostat.increaseTemp();
     };
     expect(function() {thermostat.increaseTemp()}).toThrow('Max temp reached');
   });

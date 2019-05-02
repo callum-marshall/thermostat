@@ -11,7 +11,9 @@ function Thermostat() {
 
 Thermostat.prototype.increaseTemp = function () {
   if (this.powerSave === true && this.currentTemp === 25) {
-    throw ("Max temp reached");
+    throw ("Powersave Max temp reached");
+  } else if (this.powerSave === false && this.currentTemp === 32) {
+    throw ("Max temp reached")
   } else {
     this.currentTemp++;
   }
