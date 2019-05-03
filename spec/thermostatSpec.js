@@ -66,6 +66,12 @@ describe('thermostat', function() {
     expect(thermostat.currentTemp).toEqual(thermostat.DEFAULT_TEMP)
   });
 
+  it('resets current temp to powersaveMax when powersave turned on and current temp is above powersaveMax', function() {
+    thermostat.currentTemp = 30;
+    thermostat.powerSaveSwitch();
+    expect(thermostat.currentTemp).toEqual(25);
+  });
+
   describe('print usage', function() {
     it('returns low usage when temp is under 18', function() {
       thermostat.currentTemp = 17;

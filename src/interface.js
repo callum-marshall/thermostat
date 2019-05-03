@@ -23,6 +23,7 @@ $(document).ready(function() {
   $('#powerSaveSwitch').on('click', function() {
     thermostat.powerSaveSwitch();
     $('#powerSaveStatus').text(thermostat.powerSaveStatus());
+    updateTemperature();
   })
 
   function updateTemperature() {

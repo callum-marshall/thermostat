@@ -43,6 +43,9 @@ Thermostat.prototype.printUsage = function () {
 
 Thermostat.prototype.powerSaveSwitch = function () {
   this.powerSave =! this.powerSave;
+  if (this.currentTemp >= this.PS_ON_MAX_TEMP) {
+    this.currentTemp = this.PS_ON_MAX_TEMP;
+  } 
 };
 
 Thermostat.prototype.powerSaveStatus = function () {
