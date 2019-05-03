@@ -20,19 +20,27 @@ Thermostat.prototype.increaseTemp = function () {
 };
 
 Thermostat.prototype.decreaseTemp = function () {
-  this.currentTemp--
+  this.currentTemp--;
 };
 
 Thermostat.prototype.reset = function () {
-  this.currentTemp = this.DEFAULT_TEMP
+  this.currentTemp = this.DEFAULT_TEMP;
 };
 
 Thermostat.prototype.printUsage = function () {
   if (this.currentTemp < 18) {
-    return "Low Usage"
+    return "Low Usage";
   } else if (this.currentTemp < 25) {
-    return "Medium Usage"
+    return "Medium Usage";
   } else {
-    return "High Usage"
+    return "High Usage";
   }
+};
+
+Thermostat.prototype.powerSaveSwitch = function () {
+  this.powerSave =! this.powerSave;
+};
+
+Thermostat.prototype.powerSaveStatus = function () {
+  return (this.powerSave === true ? "(ON)" : "(OFF)");
 };

@@ -61,19 +61,49 @@ describe('thermostat', function() {
 
   describe('print usage', function() {
     it('returns low usage when temp is under 18', function() {
-      thermostat.currentTemp = 17
-      expect(thermostat.printUsage()).toEqual("Low Usage")
+      thermostat.currentTemp = 17;
+      expect(thermostat.printUsage()).toEqual("Low Usage");
     });
 
     it('returns medium usage when temp is under 25', function() {
-      thermostat.currentTemp = 21
-      expect(thermostat.printUsage()).toEqual("Medium Usage")
+      thermostat.currentTemp = 21;
+      expect(thermostat.printUsage()).toEqual("Medium Usage");
     });
 
     it('returns high usage when temp is 25 and over', function() {
-      thermostat.currentTemp = 25
-      expect(thermostat.printUsage()).toEqual("High Usage")
+      thermostat.currentTemp = 25;
+      expect(thermostat.printUsage()).toEqual("High Usage");
     });
 
   });
+
+  describe('powerSaveSwitch', function() {
+    it('switches powerSave on when off', function() {
+      thermostat.powerSave = false;
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSave).toBe(true);
+    });
+
+    it('switches powerSave off when on', function() {
+      thermostat.powerSave = true;
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSave).toBe(false);
+    });
+
+  });
+
+  describe('#powerSaveStatus', function() {
+    it('changes to "OFF" when false', function() {
+      thermostat.powerSave = true;
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSaveStatus()).toEqual("(OFF)")
+    });
+
+    it('changes to "ON" when true', function() {
+      thermostat.powerSave = false;
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSaveStatus()).toEqual("(ON)")
+    });
+  });
+
 });
