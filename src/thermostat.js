@@ -13,14 +13,18 @@ Thermostat.prototype.increaseTemp = function () {
   if (this.powerSave === true && this.currentTemp === 25) {
     throw ("Powersave Max temp reached");
   } else if (this.powerSave === false && this.currentTemp === 32) {
-    throw ("Max temp reached")
+    throw ("Max temp reached");
   } else {
     this.currentTemp++;
   }
 };
 
 Thermostat.prototype.decreaseTemp = function () {
-  this.currentTemp--;
+  if (this.currentTemp === this.MIN_TEMP) {
+    throw ('Min temp reached');
+  } else {
+    this.currentTemp--;
+  }
 };
 
 Thermostat.prototype.reset = function () {

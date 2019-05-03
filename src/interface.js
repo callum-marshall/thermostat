@@ -1,27 +1,32 @@
 $(document).ready(function() {
 
   var thermostat = new Thermostat();
+  updateTemperature();
 
   $('#currentTemp').text(thermostat.currentTemp);
 
   $('#increaseTemp').on('click', function() {
     thermostat.increaseTemp();
-    $('#currentTemp').text(thermostat.currentTemp);
+    updateTemperature();
   })
 
   $('#decreaseTemp').on('click', function() {
     thermostat.decreaseTemp();
-    $('#currentTemp').text(thermostat.currentTemp);
+    updateTemperature();
   })
 
   $('#reset').on('click', function() {
     thermostat.reset();
-    $('#currentTemp').text(thermostat.currentTemp);
+    updateTemperature();
   })
 
   $('#powerSaveSwitch').on('click', function() {
     thermostat.powerSaveSwitch();
     $('#powerSaveStatus').text(thermostat.powerSaveStatus());
   })
+
+  function updateTemperature() {
+    $('#currentTemp').text(thermostat.currentTemp);
+  };
 
 })

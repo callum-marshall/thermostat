@@ -26,6 +26,13 @@ describe('thermostat', function() {
     expect(thermostat.MIN_TEMP).toEqual(10);
   });
 
+  it('only reduces the temperature if currentTemp is great than MIN_TEMP', function() {
+    for (var i = 9; i >= 0 ; i--) {
+      thermostat.decreaseTemp();
+    };
+    expect(function() {thermostat.decreaseTemp()}).toThrow('Min temp reached');
+  });
+
   it('power save mode is on by default', function() {
     expect(thermostat.powerSave).toBe(true);
   });
